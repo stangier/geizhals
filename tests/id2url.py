@@ -7,7 +7,7 @@ from geizhals import geizhals
 class TestStringMethods(unittest.TestCase):
     def __init__(self, methodName: str) -> None:
         super().__init__(methodName=methodName)
-        self.SLEEP_TIME = 5
+        self.SLEEP_TIME = 30
 
     @except_httperror
     def test_URL_AT(self):
