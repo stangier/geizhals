@@ -74,13 +74,13 @@ class Geizhals():
         soup = BeautifulSoup(request.text, 'html.parser')
 
         # parse name
-        raw = soup.find('h1', attrs={'class': 'gh-headline'})
+        raw = soup.find('h1', attrs={'class': 'variant__header__headline'})
         self.device.name = raw.string.replace('\n', '')
 
         # parse prices
         self.device.prices = []
         for tmp in soup.select('div.offer__price .gh_price'):
-            matches = re.search(_REGEX, tmp.string)
+            matches = re.search(_REGEX, tmp.string) #type: ignore
             raw = '{}.{}'.format(matches.group(1),
                                  matches.group(2))
             self.device.prices += [float(raw)]
